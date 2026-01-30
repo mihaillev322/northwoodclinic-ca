@@ -1,0 +1,554 @@
+/* Northwood Clinic – Swiss Typography Design System */
+
+/* ——————————————————————————————————————————————————
+   CSS Variables (Northwood Meridian Palette)
+—————————————————————————————————————————————————— */
+:root {
+  --nw-bg: #F6F4EF;
+  --nw-surface: #FFFFFF;
+  --nw-text: #111827;
+  --nw-muted: #4B5563;
+  --nw-border: #D6D3CC;
+  --nw-primary: #1E3A5F;
+  --nw-secondary: #2F6F7E;
+  --nw-accent: #C46B2B;
+  --nw-radius: 14px;
+  --nw-shadow: 0 10px 30px rgba(17, 24, 39, 0.08);
+  --nw-max: 1120px;
+}
+
+/* ——————————————————————————————————————————————————
+   Reset & Base
+—————————————————————————————————————————————————— */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  line-height: 1.7;
+  color: var(--nw-text);
+  background-color: var(--nw-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ——————————————————————————————————————————————————
+   Swiss Typographic Scale (clamp for fluid sizing)
+—————————————————————————————————————————————————— */
+h1 {
+  font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+  line-height: 1.1;
+  font-weight: 700;
+  color: var(--nw-primary);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 1.25rem + 1vw, 2rem);
+  line-height: 1.2;
+  font-weight: 600;
+  color: var(--nw-primary);
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
+  line-height: 1.3;
+  font-weight: 600;
+  color: var(--nw-secondary);
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+
+p {
+  margin-bottom: 1.25rem;
+}
+
+ul, ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+strong {
+  font-weight: 600;
+  color: var(--nw-primary);
+}
+
+a {
+  color: var(--nw-secondary);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+a:hover {
+  color: var(--nw-accent);
+  text-decoration-color: var(--nw-accent);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--nw-accent);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 4px rgba(196, 107, 43, 0.2);
+  border-radius: 2px;
+}
+
+/* ——————————————————————————————————————————————————
+   Layout: Grid-Based Page Frame
+—————————————————————————————————————————————————— */
+.container {
+  max-width: var(--nw-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* ——————————————————————————————————————————————————
+   Header: Sticky-ish Layout (no JS)
+—————————————————————————————————————————————————— */
+.site-header {
+  background-color: var(--nw-surface);
+  border-bottom: 1px solid var(--nw-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--nw-shadow);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.site-name {
+  font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
+  font-weight: 700;
+  color: var(--nw-primary);
+  letter-spacing: -0.01em;
+}
+
+.main-nav {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.main-nav a {
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--nw-text);
+  transition: color 0.2s ease;
+}
+
+.main-nav a:hover {
+  color: var(--nw-accent);
+}
+
+.main-nav a:focus-visible {
+  outline: 2px solid var(--nw-accent);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 4px rgba(196, 107, 43, 0.2);
+  border-radius: 2px;
+}
+
+/* ——————————————————————————————————————————————————
+   Main Content
+—————————————————————————————————————————————————— */
+main {
+  padding-top: 2.5rem;
+  padding-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  main {
+    padding-top: 3.5rem;
+    padding-bottom: 4rem;
+  }
+}
+
+article {
+  background-color: var(--nw-surface);
+  border-radius: var(--nw-radius);
+  padding: 2rem 1.5rem;
+  box-shadow: var(--nw-shadow);
+}
+
+@media (min-width: 768px) {
+  article {
+    padding: 3rem 2.5rem;
+  }
+}
+
+section {
+  margin-bottom: 2.5rem;
+}
+
+section:last-child {
+  margin-bottom: 0;
+}
+
+/* ——————————————————————————————————————————————————
+   Breadcrumbs
+—————————————————————————————————————————————————— */
+#breadcrumbs {
+  margin-bottom: 1.5rem;
+}
+
+.breadcrumb-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--nw-muted);
+}
+
+.breadcrumb-list li {
+  margin: 0;
+}
+
+.breadcrumb-list li:not(:last-child)::after {
+  content: "/";
+  margin-left: 0.5rem;
+  color: var(--nw-border);
+}
+
+.breadcrumb-list a {
+  color: var(--nw-secondary);
+  text-decoration: none;
+}
+
+.breadcrumb-list a:hover {
+  text-decoration: underline;
+  color: var(--nw-accent);
+}
+
+/* ——————————————————————————————————————————————————
+   Blockquote
+—————————————————————————————————————————————————— */
+blockquote {
+  background-color: var(--nw-bg);
+  border-left: 4px solid var(--nw-accent);
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 4px;
+  font-style: italic;
+  color: var(--nw-muted);
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* ——————————————————————————————————————————————————
+   Aside (Checklist, Callouts)
+—————————————————————————————————————————————————— */
+aside {
+  background-color: var(--nw-bg);
+  border: 1px solid var(--nw-border);
+  border-radius: var(--nw-radius);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+aside h3 {
+  margin-top: 0;
+  font-size: 1.125rem;
+  color: var(--nw-primary);
+}
+
+aside ul {
+  margin-bottom: 0;
+}
+
+/* ——————————————————————————————————————————————————
+   Tables: Zebra Striping, Hover, Caption
+—————————————————————————————————————————————————— */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  background-color: var(--nw-surface);
+  border-radius: var(--nw-radius);
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(17, 24, 39, 0.06);
+}
+
+caption {
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: var(--nw-primary);
+  text-align: left;
+  padding: 1rem;
+  background-color: var(--nw-bg);
+  border-bottom: 2px solid var(--nw-border);
+}
+
+thead {
+  background-color: var(--nw-primary);
+  color: var(--nw-surface);
+}
+
+thead th {
+  padding: 0.875rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--nw-border);
+  transition: background-color 0.2s ease;
+}
+
+tbody tr:nth-child(even) {
+  background-color: var(--nw-bg);
+}
+
+tbody tr:hover {
+  background-color: rgba(47, 111, 126, 0.08);
+}
+
+tbody td {
+  padding: 0.875rem 1rem;
+  color: var(--nw-text);
+}
+
+@media (max-width: 767px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  tr {
+    margin-bottom: 1rem;
+    border: 1px solid var(--nw-border);
+    border-radius: var(--nw-radius);
+  }
+  td {
+    border: none;
+    position: relative;
+    padding-left: 40%;
+    text-align: left;
+  }
+  td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 1rem;
+    width: 35%;
+    padding-right: 0.5rem;
+    font-weight: 600;
+    color: var(--nw-primary);
+  }
+}
+
+/* ——————————————————————————————————————————————————
+   Accordion: <details> / <summary>
+—————————————————————————————————————————————————— */
+details {
+  background-color: var(--nw-surface);
+  border: 1px solid var(--nw-border);
+  border-radius: var(--nw-radius);
+  margin-bottom: 1rem;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+}
+
+details:hover {
+  box-shadow: 0 4px 12px rgba(17, 24, 39, 0.1);
+}
+
+details[open] {
+  box-shadow: 0 4px 12px rgba(17, 24, 39, 0.1);
+}
+
+summary {
+  font-weight: 600;
+  font-size: 1.0625rem;
+  color: var(--nw-primary);
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  list-style: none;
+  background-color: var(--nw-bg);
+  transition: background-color 0.2s ease;
+  user-select: none;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary::before {
+  content: "▸";
+  display: inline-block;
+  margin-right: 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+summary:hover {
+  background-color: rgba(47, 111, 126, 0.08);
+}
+
+summary:focus-visible {
+  outline: 2px solid var(--nw-accent);
+  outline-offset: -2px;
+  box-shadow: inset 0 0 0 3px rgba(196, 107, 43, 0.2);
+}
+
+.details-content {
+  padding: 1.25rem 1.25rem 1.5rem 1.25rem;
+  color: var(--nw-text);
+}
+
+.details-content p:last-child {
+  margin-bottom: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  summary::before {
+    transition: none;
+  }
+  details {
+    transition: none;
+  }
+}
+
+/* ——————————————————————————————————————————————————
+   Footer
+—————————————————————————————————————————————————— */
+.site-footer {
+  background-color: var(--nw-primary);
+  color: var(--nw-surface);
+  padding: 1.5rem 0;
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.site-footer p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* ——————————————————————————————————————————————————
+   Responsive Two-Column Layout (>=1024px)
+—————————————————————————————————————————————————— */
+@media (min-width: 1024px) {
+  article {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2.5rem;
+  }
+  article > section:first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ——————————————————————————————————————————————————
+   Utility: Button-Style Links
+—————————————————————————————————————————————————— */
+a.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--nw-secondary);
+  color: var(--nw-surface);
+  text-decoration: none;
+  border-radius: var(--nw-radius);
+  font-weight: 600;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+a.btn:hover {
+  background-color: var(--nw-accent);
+  box-shadow: 0 4px 12px rgba(196, 107, 43, 0.3);
+}
+
+a.btn:focus-visible {
+  outline: 2px solid var(--nw-accent);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 4px rgba(196, 107, 43, 0.2);
+}
+
+/* ——————————————————————————————————————————————————
+   Accessibility: Focus-Visible Ring
+—————————————————————————————————————————————————— */
+*:focus-visible {
+  outline: 2px solid var(--nw-accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(196, 107, 43, 0.2);
+}
+
+/* ——————————————————————————————————————————————————
+   Print Styles
+—————————————————————————————————————————————————— */
+@media print {
+  body {
+    background-color: white;
+    color: black;
+  }
+  .site-header,
+  .site-footer,
+  nav {
+    display: none;
+  }
+  a {
+    text-decoration: underline;
+    color: black;
+  }
+  article {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
